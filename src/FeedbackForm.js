@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { createFeedback } from '../api';
 
-function FeedbackForm({ onSubmit }) {
-  const [feedback, setFeedback] = useState("");
+function FeedbackForm({ callSessionId }) { // Assuming you have the call session's ID
+  const [feedback, setFeedback] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(feedback);
+    try {
+      await createFeedback(callSessionId, { feedback });
+      alert("Feedback submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      alert("Error submitting feedback. Please try again.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea value={feedback} onChange={(e) => setFeedback(e.target.value)} />
-      <button type="submit">Submit Feedback</button>
-    </form>
+    // ... Rest of the component remains the same
   );
 }
-
-export default FeedbackForm;
