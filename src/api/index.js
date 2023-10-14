@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000"; // Adjust this to your backend server's address
+const BASE_URL = "http://localhost:3001"; // Adjust this to your backend server's address
 
 export const fetchCallSessions = () => {
   return axios.get(`${BASE_URL}/call_sessions`);

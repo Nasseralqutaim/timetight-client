@@ -1,0 +1,5 @@
+nav {
+  background-color: red; /* Changing the color to see if it appears */
+  height: 100px; /* Setting a definite height */
+  border: 5px solid yellow; /* Adding a border to make it more visible */
+}

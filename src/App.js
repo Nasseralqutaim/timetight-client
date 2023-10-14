@@ -1,15 +1,19 @@
 import React from "react";
 import { AppProvider } from "./context/AppContext";
 import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-// ... other imports
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import Signup from "./Signup";
 
 function App() {
   return (
     <AppProvider>
       <Navbar />
-      {/* Routes and other components go here */}
-      <Dashboard />
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
     </AppProvider>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { createFeedback } from '../api';
+import React, { useState } from "react";
+import { createFeedback } from "../api";
 
-function FeedbackForm({ callSessionId }) { // Assuming you have the call session's ID
-  const [feedback, setFeedback] = useState('');
+function FeedbackForm({ callSessionId }) {
+  // Assuming you have the call session's ID
+  const [feedback, setFeedback] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +16,5 @@ function FeedbackForm({ callSessionId }) { // Assuming you have the call session
     }
   };
 
-  return (
-    // ... Rest of the component remains the same
-  );
+  return "t";
 }
