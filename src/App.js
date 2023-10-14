@@ -8,10 +8,11 @@ import Signup from "./Signup";
 function App() {
   return (
     <AppProvider>
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/signup" element={<Signup />} />
+          {/* Add other routes here */}
         </Routes>
       </Router>
     </AppProvider>

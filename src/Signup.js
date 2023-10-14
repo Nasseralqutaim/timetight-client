@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
+import { registerUser } from "./api";
 function Signup() {
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -15,10 +15,14 @@ function Signup() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic (e.g., make an API call)
-    console.log("Form data submitted:", formData);
+    try {
+      const response = await registerUser(formData);
+      console.log("User registered successfully:", response);
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
   };
 
   return (
@@ -27,7 +31,7 @@ function Signup() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          <input type="text" name="name" value={formData.name} onChange={handleChange} />
         </div>
         <div>
           <label>Email:</label>
