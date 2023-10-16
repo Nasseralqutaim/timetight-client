@@ -13,5 +13,4 @@ root.render(
     </ErrorBoundary>
   </React.StrictMode>
 );
-
 reportWebVitals();

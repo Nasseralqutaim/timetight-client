@@ -1,5 +1,5 @@
-// src/components/Login.js
 import React, { useState } from "react";
+import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -8,8 +8,20 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Logic to send POST request to backend
-    // You can use fetch, axios, or any other method
+    try {
+      const response = await axios.post("http://localhost:3001/sessions", {
+        email: email,
+        password: password,
+      });
+
+      if (response.data && response.data.jwt) {
+        localStorage.setItem("jwt", response.data.jwt);
+        // Navigate the user to a dashboard or another route after successful login
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      // Handle login failure, e.g., show a notification or update the UI
+    }
   };
 
   return (

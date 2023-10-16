@@ -1,5 +1,6 @@
 import axios from "axios";
 const BASE_URL = "http://localhost:3001";
+axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("jwt");
 
 export const registerUser = async (userData) => {
   try {

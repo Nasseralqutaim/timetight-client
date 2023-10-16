@@ -2,8 +2,8 @@ import React from "react";
 import { AppProvider } from "./context/AppContext";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import Signup from "./Signup";
+import Login from "./Login";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/signup" element={<Signup />} />
-          {/* Add other routes here */}
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </AppProvider>
