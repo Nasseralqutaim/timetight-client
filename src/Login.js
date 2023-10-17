@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +18,7 @@ function Login() {
 
       if (response.data && response.data.jwt) {
         localStorage.setItem("jwt", response.data.jwt);
-        // Navigate the user to a dashboard or another route after successful login
+        navigate("/dashboard"); // Navigate to Dashboard upon successful login
       }
     } catch (error) {
       console.error("Error logging in:", error);
