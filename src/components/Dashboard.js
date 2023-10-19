@@ -1,18 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
+import { fetchCallSessions } from "../api";
 
 function Dashboard() {
-  const { callSessions } = useContext(AppContext);
+  const { callSessions, setCallSessions } = useContext(AppContext);
+
+  useEffect(() => {
+    const getCallSessions = async () => {
+      try {
+        const response = await fetchCallSessions();
+        console.log("Fetched Call Sessions:", response);
+        console.log("Existing callSessions:", callSessions);
+        if (response && Array.isArray(response)) {
+          // Check if the response is an array
+          setCallSessions(response);
+        }
+      } catch (error) {
+        console.error("Error fetching call sessions:", error);
+      }
+    };
+
+    getCallSessions();
+  }, [setCallSessions]);
 
   return (
     <div>
       <h2>Your Scheduled Calls</h2>
       {callSessions.map((session) => (
         <div key={session.id}>
-          {/* Render each call session details */}
-          <p>{session.title}</p>
-          <p>{session.date}</p>
-          {/* ... other session details */}
+          <p>Initiator ID: {session.initiator_id}</p>
+          <p>Recipient ID: {session.recipient_id}</p>
+          <p>Start Time: {session.start_time}</p>
+          <p>End Time: {session.end_time}</p>
         </div>
       ))}
     </div>

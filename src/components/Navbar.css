@@ -1,5 +1,5 @@
 nav {
-  background-color: red; /* Changing the color to see if it appears */
+  background-color: rgb(231, 219, 219); /* Changing the color to see if it appears */
   height: 100px; /* Setting a definite height */
-  border: 5px solid yellow; /* Adding a border to make it more visible */
+  border: 5px solid rgb(240, 240, 238); /* Adding a border to make it more visible */
 }
